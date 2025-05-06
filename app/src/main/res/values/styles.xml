@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="header_main_screen">
+        <item name="android:textSize">@dimen/size_24_sp</item>
+    </style>
+    <style name="header_settings_screen">
+        <item name="android:textSize">@dimen/size_24_sp</item>
+    </style>
+</resources>
