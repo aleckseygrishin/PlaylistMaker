@@ -8,7 +8,7 @@
         <item name="android:fontFamily">@font/ys_display_medium</item>
         <item name="android:fontWeight">500</item>
     </style>
-    <style name="buttons_main_activity" parent="Widget.MaterialComponents.Button">
+    <style name="buttons_main_activity" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_zero_dp</item>
         <item name="android:layout_weight">3</item>
@@ -17,32 +17,32 @@
         <item name="android:fontFamily">@font/ys_display_medium</item>
         <item name="android:fontWeight">500</item>
         <item name="android:textSize">@dimen/size_20_sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/yp_black</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:stateListAnimator">@null</item>
         <item name="android:letterSpacing">0</item>
         <item name="cornerRadius">@dimen/size_16_dp</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">@color/black</item>
+        <item name="iconTint">@color/yp_black</item>
     </style>
     <style name="match_wrap_content">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="header_settings_screen_style_block" parent="match_wrap_content">
-        <item name="navigationIconTint">@color/black</item>
+        <item name="navigationIconTint">@color/yp_black</item>
     </style>
     <style name="material_text_settings_activity" parent="match_wrap_content">
         <item name="android:paddingHorizontal">@dimen/size_16_dp</item>
         <item name="android:paddingVertical">@dimen/size_20_dp</item>
         <item name="android:textSize">@dimen/size_16_sp</item>
-        <item name="android:textColor">@color/black_title_settings</item>
-    </style>
-    <style name="background_activity_settings_background_color">
-        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/yp_black</item>
     </style>
     <style name="background_activity_main_color_style">
         <item name="android:background">@color/background_first_screen</item>
+    </style>
+    <style name="background_activity_other_color_style">
+        <item name="android:background">@color/white</item>
     </style>
     <style name="color_style_search_edit_text">
         <item name="android:textColorHint">@color/icon_color_cream</item>

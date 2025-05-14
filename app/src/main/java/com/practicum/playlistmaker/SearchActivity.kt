@@ -1,13 +1,16 @@
 package com.practicum.playlistmaker
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
+
 
 class SearchActivity : AppCompatActivity() {
 
@@ -24,9 +27,11 @@ class SearchActivity : AppCompatActivity() {
 
         val inputEditText = findViewById<EditText>(R.id.search_edit_text)
         val clearButton = findViewById<ImageView>(R.id.clear_icon)
+        clearButton.visibility = View.GONE
 
         clearButton.setOnClickListener {
             inputEditText.setText("")
+            hideKeyboard()
         }
 
         val simpleTextWatcher = object : TextWatcher {
@@ -64,9 +69,16 @@ class SearchActivity : AppCompatActivity() {
         enterText = savedInstanceState.getString(ENTER_TEXT_KEY, ENEMY_TEXT)
     }
 
+    private fun hideKeyboard() {
+        this.currentFocus?.let { view ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
 
     companion object {
-        const val ENTER_TEXT_KEY = "ENTER_TEXT_SEARCH"
-        const val ENEMY_TEXT = ""
+        private const val ENTER_TEXT_KEY = "ENTER_TEXT_SEARCH"
+        private const val ENEMY_TEXT = ""
     }
 }

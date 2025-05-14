@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/background_activity_settings_background_color"
+    style="@style/background_activity_other_color_style"
     tools:context=".SettingsActivity">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_marginTop="@dimen/size_4_dp"
@@ -14,7 +14,7 @@
         style="@style/header_settings_screen_style_block"
         app:title="@string/text_settings"
         app:titleTextAppearance="@style/material_header_style"
-        app:navigationIcon="@drawable/arrow_back">
+        app:navigationIcon="@drawable/ic_arrow_back_16">
     </com.google.android.material.appbar.MaterialToolbar>
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:layout_marginTop="@dimen/size_24_dp"
@@ -25,13 +25,13 @@
         />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/share_application_activity_settings"
-        android:drawableEnd="@drawable/ethernet"
+        android:drawableEnd="@drawable/ic_ethernet_16_18"
         android:text="@string/share_text"
         style="@style/material_text_settings_activity"
         />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/help_desk_activity_settings"
-        android:drawableEnd="@drawable/call_center"
+        android:drawableEnd="@drawable/ic_call_center_20"
         android:text="@string/call_center_text"
         style="@style/material_text_settings_activity"
         />
@@ -39,7 +39,7 @@
         android:id="@+id/user_agreement_activity_settings"
         android:layout_marginEnd="@dimen/size_4_dp"
         android:text="@string/user_agreement_text"
-        android:drawableEnd="@drawable/arrow_forward"
+        android:drawableEnd="@drawable/ic_arrow_forward_8_14"
         style="@style/material_text_settings_activity"
         />
 </LinearLayout>

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SearchActivity">
+    tools:context=".SearchActivity"
+    style="@style/background_activity_other_color_style">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_marginTop="@dimen/size_4_dp"
         android:layout_marginStart="@dimen/size_4_dp"
@@ -14,13 +15,12 @@
         style="@style/header_settings_screen_style_block"
         app:title="@string/button_text_search"
         app:titleTextAppearance="@style/material_header_style"
-        app:navigationIcon="@drawable/arrow_back">
+        app:navigationIcon="@drawable/ic_arrow_back_16">
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/search_edit_text"
             android:layout_width="match_parent"
@@ -30,25 +30,23 @@
             android:layout_marginEnd="@dimen/size_16_dp"
             android:layout_marginBottom="@dimen/size_8_dp"
             android:background="@drawable/rounded_search_states"
-            android:drawableStart="@drawable/search"
+            android:drawableStart="@drawable/ic_search_16"
             android:drawablePadding="@dimen/size_8_dp"
             android:hint="@string/button_text_search"
             android:inputType="text"
             android:paddingHorizontal="@dimen/size_12_dp"
             android:paddingVertical="@dimen/size_8_dp"
             android:textCursorDrawable="@drawable/color_cursor"
-            android:textColor="@color/black"
+            android:textColor="@color/yp_black"
             android:maxLines="1"
             android:maxLength="20"
             style="@style/color_style_search_edit_text" />
         <ImageView
             android:id="@+id/clear_icon"
+            android:layout_gravity="end|center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/size_28_dp"
-            android:layout_marginTop="@dimen/size_20_dp"
-            android:src="@drawable/clear_edit_text_field"
-            android:layout_alignParentEnd="true"
-            />
-    </RelativeLayout>
+            android:src="@drawable/ic_clear_edit_text_field_12"/>
+    </FrameLayout>
 </LinearLayout>

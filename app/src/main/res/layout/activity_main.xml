@@ -20,20 +20,20 @@
         android:id="@+id/search_button_main_screen"
         android:text="@string/button_text_search"
         style="@style/buttons_main_activity"
-        app:icon="@drawable/magnifier"
+        app:icon="@drawable/ic_magnifier_19"
         />
 
     <Button
         android:id="@+id/media"
         android:text="@string/button_text_media"
         style="@style/buttons_main_activity"
-        app:icon="@drawable/media"
+        app:icon="@drawable/ic_media_20"
         />
     <Button
         android:id="@+id/settings"
         android:layout_marginBottom="@dimen/size_12_dp"
         android:text="@string/text_settings"
         style="@style/buttons_main_activity"
-        app:icon="@drawable/settings"
+        app:icon="@drawable/ic_settings_20"
         />
 </LinearLayout>

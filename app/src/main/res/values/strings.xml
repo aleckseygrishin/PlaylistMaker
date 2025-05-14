@@ -15,4 +15,5 @@
     <string name="email_student">combine696@yandex.ru</string>
     <string name="theme_mail">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="body_mail">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+    <string name="title_choose">Выберите приложение для отправки:</string>
 </resources>

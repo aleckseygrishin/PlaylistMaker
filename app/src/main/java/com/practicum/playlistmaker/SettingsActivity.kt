@@ -28,10 +28,11 @@ class SettingsActivity : AppCompatActivity() {
         val writeHelpDesk = findViewById<MaterialTextView>(R.id.help_desk_activity_settings)
         writeHelpDesk.setOnClickListener {
             val sendMail = Intent(Intent.ACTION_SENDTO)
+            sendMail.data = Uri.parse("mailto:")
+            sendMail.putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.email_student)))
             sendMail.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.theme_mail))
             sendMail.putExtra(Intent.EXTRA_TEXT, getString(R.string.body_mail))
-            sendMail.setData(Uri.parse("mailto:${getString(R.string.email_student)}"))
-            startActivity(sendMail)
+            startActivity(Intent.createChooser(sendMail, getString(R.string.title_choose)))
         }
 
         val userAgreement = findViewById<MaterialTextView>(R.id.user_agreement_activity_settings)
