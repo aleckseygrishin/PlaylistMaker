@@ -1,62 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/white"
+    style="@style/background_activity_other_color_style"
     tools:context=".SettingsActivity">
     <com.google.android.material.appbar.MaterialToolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_4_dp"
         android:layout_marginStart="@dimen/size_4_dp"
-        android:id="@+id/arrow_back"
+        android:id="@+id/arrow_back_settings"
+        style="@style/header_settings_screen_style_block"
         app:title="@string/text_settings"
-        app:titleTextAppearance="@style/header_settings_screen"
-        app:navigationIcon="@drawable/arrow_back">
+        app:titleTextAppearance="@style/material_header_style"
+        app:navigationIcon="@drawable/ic_arrow_back_16">
     </com.google.android.material.appbar.MaterialToolbar>
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_24_dp"
-        android:paddingHorizontal="@dimen/size_16_dp"
-        android:paddingVertical="@dimen/size_20_dp"
         android:text="@string/dark_theme_text"
-        android:textSize="@dimen/size_16_sp"
+        style="@style/material_text_settings_activity"
         app:thumbTint="@color/switch_thumb_color"
         app:trackTint="@color/switch_track_color"
         />
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ethernet"
-        android:paddingHorizontal="@dimen/size_16_dp"
-        android:paddingVertical="@dimen/size_20_dp"
+        android:id="@+id/share_application_activity_settings"
+        android:drawableEnd="@drawable/ic_ethernet_16_18"
         android:text="@string/share_text"
-        android:textSize="@dimen/size_16_sp"
-        android:textColor="@color/black_title_settings"
+        style="@style/material_text_settings_activity"
         />
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/call_center"
-        android:paddingHorizontal="@dimen/size_16_dp"
-        android:paddingVertical="@dimen/size_20_dp"
+        android:id="@+id/help_desk_activity_settings"
+        android:drawableEnd="@drawable/ic_call_center_20"
         android:text="@string/call_center_text"
-        android:textSize="@dimen/size_16_sp"
-        android:textColor="@color/black_title_settings"
+        style="@style/material_text_settings_activity"
         />
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/user_agreement_activity_settings"
         android:layout_marginEnd="@dimen/size_4_dp"
         android:text="@string/user_agreement_text"
-        android:textColor="@color/black_title_settings"
-        android:textSize="@dimen/size_16_sp"
-        android:paddingHorizontal="@dimen/size_16_dp"
-        android:paddingVertical="@dimen/size_20_dp"
-        android:drawableEnd="@drawable/arrow_forward"
+        android:drawableEnd="@drawable/ic_arrow_forward_8_14"
+        style="@style/material_text_settings_activity"
         />
 </LinearLayout>
