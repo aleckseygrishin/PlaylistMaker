@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="cursor_size">2dp</dimen>
+
     <dimen name="size_zero_dp">0dp</dimen>
     <dimen name="size_4_dp">4dp</dimen>
+    <dimen name="size_8_dp">8dp</dimen>
     <dimen name="size_12_dp">12dp</dimen>
     <dimen name="size_16_dp">16dp</dimen>
     <dimen name="size_20_dp">20dp</dimen>
@@ -10,9 +13,8 @@
 
 
 
+    <dimen name="size_12_sp">12sp</dimen>
     <dimen name="size_16_sp">16sp</dimen>
     <dimen name="size_24_sp">24sp</dimen>
     <dimen name="size_20_sp">20sp</dimen>
-    <dimen name="size_8_dp">8dp</dimen>
-    <dimen name="cursor_size">2dp</dimen>
 </resources>

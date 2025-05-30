@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/band_image_id"
+        style="@style/song_album_image_style"
+        tools:src="@drawable/ic_no_eathernet_album_image"/>
+    <LinearLayout
+        android:layout_width="@dimen/size_zero_dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/size_8_dp"
+        android:layout_marginTop="@dimen/size_12_dp"
+        android:layout_marginBottom="@dimen/size_12_dp"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/track_name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/song_name_style"
+            tools:text="Test song name"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/band_name_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/band_name_and_time_style"
+                tools:text="Test band name"/>
+            <TextView
+                android:id="@+id/time_song_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/band_name_and_time_style"
+                android:drawableStart="@drawable/ic_dot_track"
+                android:drawablePadding="@dimen/size_8_dp"
+                tools:text="0:00"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_forward_8_14"
+        android:layout_marginEnd="@dimen/size_20_dp"
+        android:layout_marginStart="@dimen/size_16_dp"
+        android:layout_gravity="center"/>
+</LinearLayout>
