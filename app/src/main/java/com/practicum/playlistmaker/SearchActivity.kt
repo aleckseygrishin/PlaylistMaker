@@ -15,19 +15,13 @@ import com.google.android.material.appbar.MaterialToolbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class SearchActivity : AppCompatActivity() {
 
     private var enterText: String = ENEMY_TEXT
     private val iTunes = "https://itunes.apple.com"
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(iTunes)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    private val iTunesService = retrofit.create(ITunesApi::class.java)
+    private val iTunesService = RetrofitCreate(iTunes).createdRetrofit()
     private val track = ArrayList<Track>()
     private val trackAdapter = TrackAdapter()
 
