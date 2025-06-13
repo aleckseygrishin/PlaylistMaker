@@ -16,4 +16,8 @@
     <string name="theme_mail">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="body_mail">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="title_choose">Выберите приложение для отправки:</string>
+
+    <string name="track_not_found_text">Ничего не нашлось</string>
+    <string name="track_no_ethernet_text">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="reset_text">Обновить</string>
 </resources>
