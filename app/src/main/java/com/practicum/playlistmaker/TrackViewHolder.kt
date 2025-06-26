@@ -1,10 +1,9 @@
 package com.practicum.playlistmaker
 
 import android.content.Context
+import android.util.Log
 import android.util.TypedValue
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +20,9 @@ class TrackViewHolder(itemView: View) :
     private val bandNameId : TextView by lazy { itemView.findViewById(R.id.band_name_id) }
     private val timeSongId : TextView = itemView.findViewById(R.id.time_song_id)
     private val roundImage : Int = dpToPx(2.0f, itemView.context)
+    private val shared = itemView.context.getSharedPreferences(SearchHistory.KEY_ADD_HISTORY_TRACK, Context.MODE_PRIVATE)
+    private val search : SearchHistory = SearchHistory(shared)
+
 
     fun bind(track: Track) {
         Glide.with(itemView)
@@ -34,6 +36,9 @@ class TrackViewHolder(itemView: View) :
         bandNameId.text = track.artistName
         timeSongId.text = msTimeToMinutes(track.trackTime.toLong())
 
+        itemView.setOnClickListener {
+            search.addTrackHistory(track)
+        }
     }
 
     private fun dpToPx(dp: Float, context: Context): Int {
