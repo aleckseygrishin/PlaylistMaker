@@ -20,4 +20,6 @@
     <string name="track_not_found_text">Ничего не нашлось</string>
     <string name="track_no_ethernet_text">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
     <string name="reset_text">Обновить</string>
+    <string name="you_search_text">Вы искали</string>
+    <string name="clear_history_button_text">Очистить историю</string>
 </resources>

@@ -17,6 +17,7 @@
         app:navigationIcon="@drawable/ic_arrow_back_16">
     </com.google.android.material.appbar.MaterialToolbar>
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/theme_switch"
         android:layout_marginTop="@dimen/size_24_dp"
         android:text="@string/dark_theme_text"
         style="@style/material_text_settings_activity"

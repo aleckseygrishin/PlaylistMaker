@@ -7,8 +7,10 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
@@ -24,12 +26,15 @@ class SearchActivity : AppCompatActivity() {
     private val iTunesService = RetrofitCreate(iTunes).createdRetrofit()
     private val track = ArrayList<Track>()
     private val trackAdapter = TrackAdapter()
+    private val youSearchId by lazy { findViewById<TextView>(R.id.you_search_id) }
+    private val clearHistoryButtonId by lazy { findViewById<Button>(R.id.history_clear_button_id) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
         val arrowBack = findViewById<MaterialToolbar>(R.id.arrow_back_search)
+
+        val search = SearchHistory(getSharedPreferences(SearchHistory.KEY_ADD_HISTORY_TRACK, MODE_PRIVATE))
         arrowBack.setNavigationOnClickListener {
             finish()
         }
@@ -46,7 +51,30 @@ class SearchActivity : AppCompatActivity() {
                 track.clear()
                 trackAdapter.notifyDataSetChanged()
             }
+            inputEditText.clearFocus()
             hideKeyboard()
+        }
+
+        clearHistoryButtonId.setOnClickListener {
+            search.removeData()
+            youSearchId.visibility = View.GONE
+            clearHistoryButtonId.visibility = View.GONE
+            trackAdapter.tracks.clear()
+            trackAdapter.notifyDataSetChanged()
+            inputEditText.clearFocus()
+        }
+
+        inputEditText.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus && inputEditText.text.isEmpty() && !search.getEmptyOrNullSharedTracks()) {
+                youSearchId.visibility = View.VISIBLE
+                clearHistoryButtonId.visibility = View.VISIBLE
+                trackAdapter.tracks = search.getArrHistoryTrack()
+                trackAdapter.notifyDataSetChanged()
+            } else {
+                youSearchId.visibility = View.GONE
+                clearHistoryButtonId.visibility = View.GONE
+            }
+
         }
 
         inputEditText.setOnEditorActionListener { _, actionId, _ ->
@@ -77,12 +105,25 @@ class SearchActivity : AppCompatActivity() {
             false
         }
 
+
+
         val simpleTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 clearButton.visibility = clearButtonVisibility(s)
+                if (inputEditText.hasFocus() && s?.isEmpty() == true && !search.getEmptyOrNullSharedTracks()) {
+                    youSearchId.visibility = View.VISIBLE
+                    clearHistoryButtonId.visibility = View.VISIBLE
+                }
+                else {
+                    youSearchId.visibility = View.GONE
+                    clearHistoryButtonId.visibility = View.GONE
+                    trackAdapter.tracks = track
+                    trackAdapter.notifyDataSetChanged()
+                }
+
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -91,10 +132,13 @@ class SearchActivity : AppCompatActivity() {
 
         }
         inputEditText.addTextChangedListener(simpleTextWatcher)
-
         val rvTrack = findViewById<RecyclerView>(R.id.rvTrack)
         rvTrack.adapter = trackAdapter
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
@@ -125,9 +169,9 @@ class SearchActivity : AppCompatActivity() {
     private fun adapterToggle(isNotFoundTrack: Boolean) {
         track.clear()
         if (isNotFoundTrack)
-            track.add(Track("", "", "", "", Track.TRACK_TYPE_RES_NOT_FOUND))
+            track.add(Track("", "", "", "", 0, Track.TRACK_TYPE_RES_NOT_FOUND))
         else
-            track.add(Track("", "", "", "", Track.TRACK_TYPE_RES_NO_ETHERNET))
+            track.add(Track("", "", "", "", 0, Track.TRACK_TYPE_RES_NO_ETHERNET))
         trackAdapter.notifyDataSetChanged()
     }
 

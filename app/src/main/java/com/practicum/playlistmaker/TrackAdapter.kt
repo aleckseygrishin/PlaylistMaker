@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 class TrackAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var tracks = ArrayList<Track>()
+//    var historyTracks = ArrayList<Track>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
