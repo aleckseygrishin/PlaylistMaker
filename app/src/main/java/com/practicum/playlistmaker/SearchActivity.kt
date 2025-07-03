@@ -3,8 +3,10 @@ package com.practicum.playlistmaker
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -36,8 +38,9 @@ class SearchActivity : AppCompatActivity() {
         val trackAdapter = TrackAdapter(
             { clickedTrack ->
                 searchShared.addTrackHistory(clickedTrack)
-                SavedData.savedTrackOpen = clickedTrack
-                val intent = Intent(this, AudioPlayerActivity::class.java)
+                val intent = Intent(this, AudioPlayerActivity::class.java).apply {
+                    putExtra(AllKeys.KEY_TRACK_SWITCH_ACTIVITY, clickedTrack as Parcelable)
+                }
                 startActivity(intent)
             }
         )
