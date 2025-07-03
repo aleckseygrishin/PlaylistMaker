@@ -106,4 +106,34 @@
         <item name="android:letterSpacing">0</item>
         <item name="android:textColor">@color/yp_black</item>
     </style>
+    <style name="band_name_style_player">
+        <item name="android:textSize">@dimen/size_16_sp</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
+    <style name="timer_style_player">
+        <item name="android:textSize">@dimen/size_16_sp</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+    <style name="song_name_style_player">
+        <item name="android:textSize">@dimen/size_24_sp</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
+    <style name="title_prop_style_player">
+        <item name="android:textSize">@dimen/size_12_sp</item>
+        <item name="android:textColor">@color/yp_text_gray</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
+    <style name="prop_style_player">
+        <item name="android:textSize">@dimen/size_12_sp</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
 </resources>
