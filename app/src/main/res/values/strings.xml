@@ -23,4 +23,10 @@
     <string name="you_search_text">Вы искали</string>
     <string name="clear_history_button_text">Очистить историю</string>
     <string name="not_available">Ничего не найдено</string>
+    <string name="text_timer_track_player">0:30</string>
+    <string name="text_title_track_time_player">Длительность</string>
+    <string name="text_title_album_track_player">Альбом</string>
+    <string name="text_title_year_track_player">Год</string>
+    <string name="text_title_style_track_player">Жанр</string>
+    <string name="text_title_country_track_player">Страна</string>
 </resources>
