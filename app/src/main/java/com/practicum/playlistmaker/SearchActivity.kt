@@ -1,6 +1,7 @@
 package com.practicum.playlistmaker
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -25,16 +26,26 @@ class SearchActivity : AppCompatActivity() {
     private val iTunes = "https://itunes.apple.com"
     private val iTunesService = RetrofitCreate(iTunes).createdRetrofit()
     private val track = ArrayList<Track>()
-    private val trackAdapter = TrackAdapter()
     private val youSearchId by lazy { findViewById<TextView>(R.id.you_search_id) }
     private val clearHistoryButtonId by lazy { findViewById<Button>(R.id.history_clear_button_id) }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val shared = getSharedPreferences(SearchHistory.KEY_ADD_HISTORY_TRACK, MODE_PRIVATE)
+        val searchShared = SearchHistory(shared)
+        val trackAdapter = TrackAdapter(
+            { clickedTrack ->
+                searchShared.addTrackHistory(clickedTrack)
+                SavedData.savedTrackOpen = clickedTrack
+                val intent = Intent(this, AudioPlayerActivity::class.java)
+                startActivity(intent)
+            }
+        )
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         val arrowBack = findViewById<MaterialToolbar>(R.id.arrow_back_search)
 
-        val search = SearchHistory(getSharedPreferences(SearchHistory.KEY_ADD_HISTORY_TRACK, MODE_PRIVATE))
         arrowBack.setNavigationOnClickListener {
             finish()
         }
@@ -56,7 +67,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         clearHistoryButtonId.setOnClickListener {
-            search.removeData()
+            searchShared.removeData()
             youSearchId.visibility = View.GONE
             clearHistoryButtonId.visibility = View.GONE
             trackAdapter.tracks.clear()
@@ -65,10 +76,10 @@ class SearchActivity : AppCompatActivity() {
         }
 
         inputEditText.setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus && inputEditText.text.isEmpty() && !search.getEmptyOrNullSharedTracks()) {
+            if (hasFocus && inputEditText.text.isEmpty() && !searchShared.getEmptyOrNullSharedTracks()) {
                 youSearchId.visibility = View.VISIBLE
                 clearHistoryButtonId.visibility = View.VISIBLE
-                trackAdapter.tracks = search.getArrHistoryTrack()
+                trackAdapter.tracks = searchShared.getArrHistoryTrack()
                 trackAdapter.notifyDataSetChanged()
             } else {
                 youSearchId.visibility = View.GONE
@@ -90,13 +101,18 @@ class SearchActivity : AppCompatActivity() {
                                 if (response.body()?.resultCount != 0) {
                                     track.addAll(response.body()?.results!!)
                                     trackAdapter.notifyDataSetChanged()
-                                } else if (response.body()?.resultCount == 0)
+                                } else if (response.body()?.resultCount == 0) {
                                     adapterToggle(true)
+                                    trackAdapter.notifyDataSetChanged()
+                                }
+
                             }
                         }
 
                         override fun onFailure(call: Call<TrackResponse>, t: Throwable) {
                             adapterToggle(false)
+                            trackAdapter.notifyDataSetChanged()
+
                         }
                     })
                 }
@@ -113,7 +129,7 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 clearButton.visibility = clearButtonVisibility(s)
-                if (inputEditText.hasFocus() && s?.isEmpty() == true && !search.getEmptyOrNullSharedTracks()) {
+                if (inputEditText.hasFocus() && s?.isEmpty() == true && !searchShared.getEmptyOrNullSharedTracks()) {
                     youSearchId.visibility = View.VISIBLE
                     clearHistoryButtonId.visibility = View.VISIBLE
                 }
@@ -168,11 +184,15 @@ class SearchActivity : AppCompatActivity() {
 
     private fun adapterToggle(isNotFoundTrack: Boolean) {
         track.clear()
-        if (isNotFoundTrack)
-            track.add(Track("", "", "", "", 0, Track.TRACK_TYPE_RES_NOT_FOUND))
-        else
-            track.add(Track("", "", "", "", 0, Track.TRACK_TYPE_RES_NO_ETHERNET))
-        trackAdapter.notifyDataSetChanged()
+        val emptyTrack = Track("", "", "", "", 0, "", "", "", "", "")
+        if (isNotFoundTrack) {
+            emptyTrack.typeRes = Track.TRACK_TYPE_RES_NOT_FOUND
+            track.add(emptyTrack)
+        }
+        else {
+            emptyTrack.typeRes = Track.TRACK_TYPE_RES_NO_ETHERNET
+            track.add(emptyTrack)
+        }
     }
 
 

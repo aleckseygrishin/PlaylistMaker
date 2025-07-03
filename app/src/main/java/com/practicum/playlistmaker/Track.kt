@@ -8,6 +8,10 @@ data class Track(
     @SerializedName("trackTimeMillis") val trackTime: String,
     val artworkUrl100: String,
     val trackId: Int,
+    val collectionName: String,
+    val releaseDate: String,
+    val primaryGenreName: String,
+    val country: String,
     var typeRes: String
 ) {
 

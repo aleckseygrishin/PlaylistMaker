@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class TrackAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TrackAdapter(private val onTrackClick: (Track) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var tracks = ArrayList<Track>()
 
@@ -24,6 +24,10 @@ class TrackAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             is TrackViewHolder -> holder.bind(track)
             is TrackNotFoundViewHolder -> holder.bind()
             is TrackNoEthernetViewHolder -> holder.bind()
+        }
+
+        holder.itemView.setOnClickListener {
+            onTrackClick(track)
         }
     }
 
