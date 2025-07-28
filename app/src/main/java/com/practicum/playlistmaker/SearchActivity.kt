@@ -102,6 +102,11 @@ class SearchActivity : AppCompatActivity() {
         rvTrack.adapter = trackAdapter
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(searchRunnable)
+    }
+
     private fun createTextWatcher(clearButton: ImageView): TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

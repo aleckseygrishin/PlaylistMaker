@@ -40,10 +40,10 @@ class AudioPlayerActivity : AppCompatActivity() {
 
         handlerMain = Handler(Looper.getMainLooper())
 
-        val playAndPauseButton by lazy { findViewById<ImageButton>(R.id.play_and_pause_track_player_id) }
-        val likeButton by lazy { findViewById<ImageButton>(R.id.like_track_in_player_id) }
-        val addPlaylistButton by lazy { findViewById<ImageButton>(R.id.add_in_playlist_player_id) }
-        val arrowBack by lazy { findViewById<MaterialToolbar>(R.id.arrow_back_player_id) }
+        val playAndPauseButton = findViewById<ImageButton>(R.id.play_and_pause_track_player_id)
+        val likeButton = findViewById<ImageButton>(R.id.like_track_in_player_id)
+        val addPlaylistButton = findViewById<ImageButton>(R.id.add_in_playlist_player_id)
+        val arrowBack = findViewById<MaterialToolbar>(R.id.arrow_back_player_id)
         var isActiveLikeButton = false
         var isActiveAddPlaylistButton = false
         val track = getSavedTrack()
@@ -59,7 +59,7 @@ class AudioPlayerActivity : AppCompatActivity() {
             finish()
         }
 
-        preparePlayer()
+        preparePlayer(track)
 
         playAndPauseButton.setOnClickListener {
             playbackControl()
@@ -120,9 +120,8 @@ class AudioPlayerActivity : AppCompatActivity() {
         return SimpleDateFormat("mm:ss", Locale.getDefault()).format(time)
     }
 
-    private fun preparePlayer() {
-        val track = getSavedTrack()
-        mediaPlayer.setDataSource(track!!.previewUrl)
+    private fun preparePlayer(track: Track?) {
+        mediaPlayer.setDataSource(track?.previewUrl)
         mediaPlayer.prepareAsync()
         mediaPlayer.setOnPreparedListener {
             playAndPauseButton.isEnabled = true
