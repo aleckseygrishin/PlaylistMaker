@@ -39,7 +39,7 @@
         <item name="android:textColor">@color/yp_black</item>
     </style>
     <style name="background_activity_main_color_style">
-        <item name="android:background">@color/background_first_screen</item>
+        <item name="android:background">@color/yp_medium_blue</item>
     </style>
     <style name="background_activity_other_color_style">
         <item name="android:background">@color/white</item>
