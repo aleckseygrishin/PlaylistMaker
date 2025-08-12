@@ -1,14 +1,13 @@
-package com.practicum.playlistmaker
+package com.practicum.playlistmaker.domain.models
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Track(
     val trackName: String,
     val artistName: String,
-    @SerializedName("trackTimeMillis") val trackTime: String,
+    val trackTimeMillis: String,
     val artworkUrl100: String,
     val trackId: Int,
     val collectionName: String,
@@ -16,11 +15,5 @@ data class Track(
     val primaryGenreName: String,
     val country: String,
     val previewUrl: String,
-    var typeRes: String? = null
-) : Parcelable {
-
-    companion object {
-        const val TRACK_TYPE_RES_NOT_FOUND = "NOT_FOUND"
-        const val TRACK_TYPE_RES_NO_ETHERNET = "NO_ETHERNET"
-    }
-}
+    val typeRes: TrackTypeRes = TrackTypeRes.DEFAULT
+) : Parcelable

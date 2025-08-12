@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/background_activity_other_color_style"
-        tools:context=".AudioPlayerActivity">
+        tools:context=".ui.AudioPlayerActivity">
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/arrow_back_player_id"
             android:layout_width="wrap_content"

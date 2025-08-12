@@ -1,8 +1,9 @@
-package com.practicum.playlistmaker
+package com.practicum.playlistmaker.ui
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.playlistmaker.R
 
 
 class TrackNotFoundViewHolder(itemView: View) :
