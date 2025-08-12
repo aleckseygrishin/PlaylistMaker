@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SearchActivity"
+    tools:context=".ui.SearchActivity"
     style="@style/background_activity_other_color_style">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_marginTop="@dimen/size_4_dp"
