@@ -1,6 +1,5 @@
 package com.practicum.playlistmaker.data.mapper
 
-import android.util.Log
 import com.practicum.playlistmaker.data.dto.TrackDto
 import com.practicum.playlistmaker.domain.models.Track
 import com.practicum.playlistmaker.domain.models.TrackTypeRes
@@ -8,8 +7,7 @@ import java.util.Locale
 
 class TrackMapper {
     fun mapToDomain(dto: TrackDto): Track? {
-        return try {
-            Track(
+        return Track(
                 trackName = dto.trackName ?: "",
                 artistName = dto.artistName ?: "",
                 trackTimeMillis = msToTimeFormat(dto.trackTimeMillis) ?: "",
@@ -22,10 +20,6 @@ class TrackMapper {
                 previewUrl = dto.previewUrl ?: "",
                 typeRes = TrackTypeRes.DEFAULT
             )
-        } catch (e: Exception) {
-            Log.e("MAPPER", "Failed to map track: ${e.message}", e)
-            null
-        }
     }
 
     private fun msToTimeFormat(ms: Long?): String {

@@ -18,6 +18,8 @@ import com.practicum.playlistmaker.domain.usecases.PlayerInteractor
 import com.practicum.playlistmaker.domain.usecases.SettingsInteractor
 
 object Creator {
+    private const val SHARED_PREFS_FILE = "search_prefs"
+
     private fun getTrackMapper(): TrackMapper {
         return TrackMapper()
     }
@@ -30,7 +32,7 @@ object Creator {
     }
 
     private fun provideSharedPreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences("search_prefs", Context.MODE_PRIVATE)
+        return context.getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE)
     }
 
     private fun provideGson(): Gson {

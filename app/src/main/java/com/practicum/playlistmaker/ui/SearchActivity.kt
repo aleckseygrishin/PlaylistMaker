@@ -65,6 +65,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        clearButton.visibility = View.GONE
         setupToolbar()
         setupRecyclerView()
         setupClickListeners()
@@ -88,7 +89,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun startPlayerActivity(track: Track) {
         Intent(this, AudioPlayerActivity::class.java).apply {
-            putExtra(AllKeys.KEY_TRACK_SWITCH_ACTIVITY, track as Parcelable)
+            putExtra(KEY_TRACK_SWITCH_ACTIVITY, track as Parcelable)
             startActivity(this)
         }
     }
@@ -256,5 +257,6 @@ class SearchActivity : AppCompatActivity() {
         private const val DEFAULT_TEXT = ""
         private const val SEARCH_DEBOUNCE_DELAY = 2000L
         private const val CLICK_DEBOUNCE_DELAY = 1000L
+        private const val KEY_TRACK_SWITCH_ACTIVITY = "key_track_switch_activity"
     }
 }

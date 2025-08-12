@@ -23,16 +23,16 @@ class AudioPlayerActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var updatePositionRunnable: Runnable
 
-    private val playAndPauseButton by lazy { findViewById<ImageButton>(R.id.play_and_pause_track_player_id) }
-    private val logoTrackPlayer by lazy { findViewById<ImageView>(R.id.logo_track_player_id) }
-    private val nameTrackPlayer by lazy { findViewById<TextView>(R.id.track_name_player_id) }
-    private val bandNamePlayer by lazy { findViewById<TextView>(R.id.band_name_player_id) }
-    private val timeTrackPlayer by lazy { findViewById<TextView>(R.id.track_time_player_id) }
-    private val albumNamePlayer by lazy { findViewById<TextView>(R.id.album_track_player_id) }
-    private val yearTrackPlayer by lazy { findViewById<TextView>(R.id.year_track_player_id) }
-    private val styleTrackPlayer by lazy { findViewById<TextView>(R.id.style_track_player_id) }
-    private val countryTrackPlayer by lazy { findViewById<TextView>(R.id.country_track_player_id) }
-    private val mainTimerTrack by lazy { findViewById<TextView>(R.id.timer_track_player_id) }
+    private val playAndPauseButton by lazy(LazyThreadSafetyMode.NONE) { findViewById<ImageButton>(R.id.play_and_pause_track_player_id) }
+    private val logoTrackPlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<ImageView>(R.id.logo_track_player_id) }
+    private val nameTrackPlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.track_name_player_id) }
+    private val bandNamePlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.band_name_player_id) }
+    private val timeTrackPlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.track_time_player_id) }
+    private val albumNamePlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.album_track_player_id) }
+    private val yearTrackPlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.year_track_player_id) }
+    private val styleTrackPlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.style_track_player_id) }
+    private val countryTrackPlayer by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.country_track_player_id) }
+    private val mainTimerTrack by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.timer_track_player_id) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,10 +134,10 @@ class AudioPlayerActivity : AppCompatActivity() {
 
     private fun getSavedTrack(): Track? {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(AllKeys.KEY_TRACK_SWITCH_ACTIVITY, Track::class.java)
+            intent.getParcelableExtra(KEY_TRACK_SWITCH_ACTIVITY, Track::class.java)
         } else {
             @Suppress("DEPRECATION")
-            intent.getParcelableExtra(AllKeys.KEY_TRACK_SWITCH_ACTIVITY)
+            intent.getParcelableExtra(KEY_TRACK_SWITCH_ACTIVITY)
         }
     }
 
@@ -155,5 +155,6 @@ class AudioPlayerActivity : AppCompatActivity() {
 
     companion object {
         private const val DELAY_TRACK_REFRESH_TIME = 300L
+        private const val KEY_TRACK_SWITCH_ACTIVITY = "key_track_switch_activity"
     }
 }
